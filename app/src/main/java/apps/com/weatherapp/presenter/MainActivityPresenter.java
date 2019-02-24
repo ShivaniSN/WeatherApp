@@ -23,49 +23,55 @@ public class MainActivityPresenter {
     String stringParam = "Pune";
 
     public MainActivityPresenter(View view) {
-        this.weather = new List_Weather();
+       // this.weather = new List_Weather();
         this.view = view;
     }
 
     public void updateCity(String city){
-        weather.setStringCity(city);
-        view.updateUserInfoTextView(weather.toString());
+        //weather.setStringCity(city);
+        view.updateCityTextView(city);
 
     }
 
     public void updateDay(String day){
-        weather.setStringDay(day);
-        view.updateUserInfoTextView(weather.toString());
+       // weather.setStringDay(day);
+        view.updateDayTextView(day);
 
     }
 
     public void updateTemperature(String temp){
-        weather.setStringTemp(temp);
-        view.updateUserInfoTextView(weather.toString());
+        //weather.setStringTemp(temp);
+        view.updateTemperatureTextView(temp);
 
     }
 
     public void updateDescription(String desc){
-        weather.setStringDescription(desc);
-        view.updateUserInfoTextView(weather.toString());
+       // weather.setStringDescription(desc);
+        view.updateDescriptionTextView(desc);
 
     }
 
     public void updateHumidity(String humidity){
-        weather.setStringHumidity(humidity);
-        view.updateUserInfoTextView(weather.toString());
+        //weather.setStringHumidity(humidity);
+        view.updateHumidityTextView(humidity);
 
     }
 
     public void updateWind(String wind){
-        weather.setStringWind(wind);
-        view.updateUserInfoTextView(weather.toString());
+        //weather.setStringWind(wind);
+        view.updateWindTextView(wind);
 
     }
 
     public interface View{
 
-        void updateUserInfoTextView(String info);
+        void updateCityTextView(String info);
+        void updateDayTextView(String info);
+        void updateTemperatureTextView(String info);
+        void updateDescriptionTextView(String info);
+        void updateHumidityTextView(String info);
+        void updateWindTextView(String info);
+
         void showProgressBar();
         void hideProgressBar();
 
@@ -91,6 +97,7 @@ public class MainActivityPresenter {
                 response.body();
 
                 String stringDescription = response.body().getWeather().get(0).getMain().toString();
+                //System.out.println(response.body().getWeather().get(0).getMain().toString());
 
                 Double temp = 0.0,tempMax = 0.0,tempMin = 0.0,windSpeed = 0.0;
 
@@ -114,10 +121,10 @@ public class MainActivityPresenter {
 //                }
 
                 updateCity(response.body().getName());
-                updateHumidity(response.body().getMain().getHumidity().toString() + "%");
-                updateWind(windSpeed.toString() + " km/hr");
-                updateTemperature(temp.toString() + " \\u00b0 ");
-                updateDescription(stringDescription + "  " + tempMin + " \\u00b0 /" + tempMax + " \\u00b0 ");
+                updateHumidity("Humidity : " + response.body().getMain().getHumidity().toString() + " %");
+                updateWind("Wind Speed : " + windSpeed.intValue() + " km/hr");
+                updateTemperature(temp.intValue() + "\u00b0C");
+                updateDescription(stringDescription + "  " + tempMin.intValue() + "\u00b0 C / " + tempMax.intValue() + "\u00b0 C");
                 updateDay(dayOfTheWeek);
             }
 

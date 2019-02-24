@@ -52,7 +52,7 @@ public class Activity_Main extends AppCompatActivity implements MainActivityPres
 
         Calendar c = Calendar.getInstance();
         int timeOfDay = c.get(Calendar.HOUR_OF_DAY);
-        if(timeOfDay >= 21 && timeOfDay < 24){
+        if(timeOfDay >= 15 && timeOfDay < 24){
             constraintLayoutMain.setBackground(ContextCompat.getDrawable(this, R.drawable.animationlist_night));
         }else {
             constraintLayoutMain.setBackground(ContextCompat.getDrawable(this, R.drawable.animationlist_day));
@@ -70,12 +70,32 @@ public class Activity_Main extends AppCompatActivity implements MainActivityPres
     }
 
     @Override
-    public void updateUserInfoTextView(String info) {
+    public void updateCityTextView(String info) {
         textViewCity.setText(info);
+
+    }
+    @Override
+    public void updateDayTextView(String info) {
         textViewDay.setText(info);
+    }
+
+    @Override
+    public void updateTemperatureTextView(String info) {
         textViewTemperature.setText(info);
+    }
+
+    @Override
+    public void updateDescriptionTextView(String info) {
         textViewDescription.setText(info);
+    }
+
+    @Override
+    public void updateHumidityTextView(String info) {
         textViewHumidity.setText(info);
+    }
+
+    @Override
+    public void updateWindTextView(String info) {
         textViewWind.setText(info);
     }
 

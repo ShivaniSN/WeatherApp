@@ -1,16 +1,13 @@
-package apps.com.weatherapp;
+package apps.com.weatherapp.network;
 
-import java.util.List;
-import java.util.Map;
-
+import apps.com.weatherapp.model.Result;
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Query;
-import retrofit2.http.QueryMap;
 
 public interface APIInterface {
     String BASE_URL = "http://api.openweathermap.org/data/2.5/";
-    String API_KEY = "150caaaac296113d567c1cf4648d54b1";
+    String API_KEY = "APPID";
     String NAME = "q";
 
     @GET("weather")
